@@ -35,7 +35,7 @@ public:
     virtual ~COperationAdd() = default;
 
 public:
-    virtual double get_result() const = 0;
+    virtual double get_result() const override = 0;
 };
 
 //A算法的加法器
@@ -76,7 +76,7 @@ public:
     virtual ~COperationSub() = default;
 
 public:
-    virtual double get_result() const = 0;
+    virtual double get_result() const override = 0;
 };
 
 //A算法的减法器
@@ -126,11 +126,11 @@ public:
     virtual ~CAMethodFactory() = default;
 
 public:
-    inline virtual COperation* creat_operationAdd() const {
+    inline virtual COperation* creat_operationAdd() const override {
         return new CAMethodOperationAdd();
     }
 
-    inline virtual COperation* creat_operationSub() const {
+    inline virtual COperation* creat_operationSub() const override {
         return new CAMethodOperationSub();
     }
 
@@ -142,11 +142,11 @@ public:
     virtual ~CBMethodFactory() = default;
 
 public:
-    inline virtual COperation* creat_operationAdd() const {
+    inline virtual COperation* creat_operationAdd() const override {
         return new CBMethodOperationAdd();
     }
 
-    inline virtual COperation* creat_operationSub() const {
+    inline virtual COperation* creat_operationSub() const override {
         return new CBMethodOperationSub();
     }
 
@@ -158,7 +158,7 @@ int main(int argc, char const *argv[])
     COperation *pOpr = pFactory->creat_operationAdd();
 
     pOpr->set_numA(3);
-    pOpr->set_numA(7);
+    pOpr->set_numB(7);
     std::cout << pOpr->get_result() << std::endl;
 
     delete pOpr;
